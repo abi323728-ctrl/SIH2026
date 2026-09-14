@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
 
     // 2. Custom User / Enterprise login simulation
     if (cleanEmail && cleanPassword.length >= 4) {
-      const generatedName = cleanEmail.split("@")[0].replace(/[._-]/g, " ").replace(/\b\w/g, l => l.toUpperCase());
+      const generatedName = cleanEmail.split("@")[0].replace(/[._-]/g, " ").replace(/\b\w/g, (l: string) => l.toUpperCase());
       return NextResponse.json({
         success: true,
         user: {

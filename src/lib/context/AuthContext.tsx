@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { User } from "@/types";
+import { User, UserRole } from "@/types";
 
 interface AuthContextType {
   user: User | null;
@@ -18,7 +18,7 @@ const DEMO_USER: User = {
   name: "Rajesh Sharma",
   email: "demo@bisassist.ai",
   organization: "Bharat Electronics & Consumer Goods Ltd.",
-  role: "Senior Compliance Officer",
+  role: "Compliance Engineer",
   avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
   licenseNumber: "CM/L-8472910"
 };
@@ -141,7 +141,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         name: name,
         email: email,
         organization: org || "Bharat Electronics",
-        role: role || "Compliance Officer",
+        role: (role as UserRole) || "Compliance Engineer",
         licenseNumber: `CM/L-${Math.floor(1000000 + Math.random() * 9000000)}`
       };
       setUser(newUser);
